@@ -2,7 +2,7 @@
 
 Windows I/O Completion Port (IOCP).
 
-后端采用winsock C++ 及简单stl完成.
+后端采用winsock C++ 及简单STL完成.
 
 前端采用QT5.12.
 
