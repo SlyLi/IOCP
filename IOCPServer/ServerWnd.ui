@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ServerWndClass</class>
+ <widget class="QMainWindow" name="ServerWndClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>624</width>
+    <height>551</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>ServerWnd</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QPushButton" name="startServer">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>480</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>开启服务器</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="stopServer">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>480</y>
+      <width>121</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>关闭服务器</string>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="listWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>601</width>
+      <height>451</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusBar">
+   <property name="sizeGripEnabled">
+    <bool>true</bool>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="ServerWnd.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>startServer</sender>
+   <signal>clicked()</signal>
+   <receiver>ServerWndClass</receiver>
+   <slot>slotStartServer()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>126</x>
+     <y>423</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>242</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>stopServer</sender>
+   <signal>clicked()</signal>
+   <receiver>ServerWndClass</receiver>
+   <slot>slotStopServer()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>336</x>
+     <y>423</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>242</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>slotStartServer()</slot>
+  <slot>slotStopServer()</slot>
+ </slots>
+</ui>
