@@ -133,32 +133,55 @@ public:
 	~IOCPServer();
 	//绑定主窗口，用于显示信息
 	void BingMainWnd(ServerWnd *dlg);
-	//
+
+	//启动服务器
 	bool StartServer();
+
+	//停止服务器
 	void StopServer();
 
 private:
+	//工人线程，为iocp请求工作
 	static DWORD WINAPI WorkerThread(LPVOID lpParam);
 
-	bool LoadSocketLib();															//加载socket库
-	void UnloadSocketLib();															//卸载socker库
+	//加载socket库
+	bool LoadSocketLib();	
 
-	bool InitIOCP();																		
+	//卸载socker库
+	void UnloadSocketLib();														
+
+	//初始化iocp
+	bool InitIOCP();							
+
+	//初始化AcceptEx函数及AcceptExSockAddr函数的地址
 	bool GetPtrOfAcceptExAndGetAcceptExSockaddrs();
+
+	// 初始化主Socket，root
 	bool InitListenSocket();
+
+	// 将句柄绑定到完成端口中
 	bool AssociateIOCP(SOCKET_CONTEXT *socket_context);
 
+	// 投递Accept请求
 	bool PostAccept(IO_CONTEXT *io_context);
+	//投递receive请求
 	bool PostReceive(IO_CONTEXT *io_context);
+	//处理accept请求，并投递
 	bool GetAccept(SOCKET_CONTEXT *socket_context, IO_CONTEXT *io_context);
+	//处理receive请求，并投递
 	bool GetReceive(SOCKET_CONTEXT *socket_context, IO_CONTEXT *io_context);
 
+	//清理客户端信息，释放资源
 	void ClearClientContext();
+	//移除一个客户端
 	void RemoveClientContext(SOCKET_CONTEXT * &socket_context);
+	//添加一个客户端
 	void AddToClientContext(SOCKET_CONTEXT *socket_context);
 
-	void ShowStatusMessage(std::wstring str);										//主界面显示消息
-	void GetLocalIP();																//将本机ip设置到服务器监听地址
+	//主界面显示消息
+	void ShowStatusMessage(std::wstring str);		
+	//将本机ip设置到服务器监听地址
+	void GetLocalIP();																
 
 	HANDLE h_event_shutdown;														//工人线程退出事件
 	HANDLE h_iocp;																	//IOCP 句柄
