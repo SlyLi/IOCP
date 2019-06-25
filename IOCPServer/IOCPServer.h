@@ -184,7 +184,7 @@ private:
 	void GetLocalIP();																
 
 	HANDLE h_event_shutdown;														//工人线程退出事件
-	HANDLE h_iocp;																	//IOCP 句柄
+	HANDLE h_iocp;																	//IOCP句柄
 	HANDLE *h_worker_threads;														//工人线程列表
 	int threads_num;																//工人线程数量
 	CRITICAL_SECTION cs_thread_synchro;												//互斥量，工人线程同步
